@@ -1008,12 +1008,7 @@ export const deleteDocument = ({ files, pagination }: VideoFilesProvider) => `
             : ``
         }
       </span>
-      </section>
-      <div id="modal" class="modal">
-        <span class="close">&times;</span>
-        <video class="modal-content" id="modal-video"></video>
-        <div id="caption"></div>
-      </div>
+    </section>
     </main>
     <hr style="margin-top: 1.2rem" />
     <footer style="display: flex; flex-direction: column;">
