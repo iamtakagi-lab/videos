@@ -1,0 +1,3 @@
+[submodule "mpegts.js"]
+	path = mpegts.js
+	url = https://github.com/iamtakagi/mpegts.js

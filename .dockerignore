@@ -1,0 +1,7 @@
+/node_modules
+/storage
+/thumbnail
+.git
+.gitignore
+.gitmodules
+.DS_Store

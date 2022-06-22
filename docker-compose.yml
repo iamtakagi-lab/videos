@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  app:
+    container_name: videos
+    image: videos:latest
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./storage:/app/storage:rw
+      - ./thumbnail:/app/thumbnail:rw
+    env_file:
+      - .env
+    environment:
+      - TZ=Asia/Tokyo
+      - LANG=ja_JP.UTF-8
+      - PORT=8777
+    restart: unless-stopped
+    networks:
+      - proxy_network
+
+networks:
+  proxy_network:
+    external: true

@@ -1,0 +1,10 @@
+node_modules
+yarn-error.log
+dist
+.env
+storage/*.mp4
+storage/*.webp
+storage/*.ts
+storage/*.m2ts
+thumbnail/*.jpg
+.DS_Store
