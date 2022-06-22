@@ -3,9 +3,9 @@
 ## Features
 
 ### Supporting Media Formats
-- .mp4
 - .ts
 - .m2ts
+- .mp4
 - .webm
 
 ### Upload Size
@@ -67,7 +67,7 @@ $ yarn dev
 ```
 
 ### Build
-Bundle webpack with copy built mpegts.js
+Bundle webpack and Copy built mpegts.js
 ```console
 $ yarn build
 ```
