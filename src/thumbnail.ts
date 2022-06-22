@@ -6,7 +6,7 @@ export const shot = () => spawn(
         '-re', 
         '-i', 'pipe:0',
         '-ss', '00:00:03',
-        '-s', '1920x1080',
+        '-s', '1200x630', // for OGP
         '-frames', '1',
         '-f', 'mjpeg',
         'pipe:1'
