@@ -846,7 +846,7 @@ export const uploadDocument = (files: string[]) => `
               isMpegts = true
               mpegtsPlayer = mpegts.createPlayer({
                 type: 'mpegts',
-                url: 'http://localhost:3000/mpegts?fileName=' + this.id,
+                url: '${SITE_BASEURL}/mpegts?fileName=' + this.id,
                 }, {
                   enableWorker: true,
                   lazyLoad: true,
