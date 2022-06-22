@@ -9,7 +9,7 @@
 - .webm
 
 ### Upload Size
-See a .env and edit.
+See a .env and edit it.
 
 ## References
 - [FFmpeg](https://github.com/FFmpeg/FFmpeg)
@@ -19,7 +19,7 @@ See a .env and edit.
 Version: 5.0.1
 
 ### mpegts.js
-Using [Fork and Build](https://github.com/iamtakagi/mpegts.js).
+Using [this Fork and Build](https://github.com/iamtakagi/mpegts.js).
 
 ## Get Started
 ```console
