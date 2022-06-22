@@ -955,10 +955,8 @@ export const deleteDocument = ({ files, pagination }: VideoFilesProvider) => `
 
         if(isConfrimed) {
           fetch("/delete?fileName=" + fileName, {method: 'DELETE'}).then((res) => {
-            console.log(res);
             if(res.status === 204) {
               window.alert("動画ファイルが削除されました");
-              modal.style.display = "none";
               location.reload();
             } else if (res.status === 404 ){
               window.alert("動画ファイルが存在しません (" + JSON.stringfy(res.body) + ")");
