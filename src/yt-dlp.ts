@@ -14,7 +14,7 @@ export const ytdlp = (
   }
 ) =>
   exec(
-    `cd ${path.resolve(__dirname, "..", "storage")} && yt-dlp ${url}`,{ encoding: 'utf-8' },
+    `cd ${path.resolve(__dirname, "..", "storage")} && yt-dlp --format mp4 ${url}`,{ encoding: 'utf-8' },
     function (error, stdout, stderr) {
       if (error !== null) {
         onError(error);
