@@ -52,10 +52,10 @@ export const YtdlpPage = (files: string[]) => `
         const url = document.getElementById("url").value;
         const res = await fetch("/yt-dlp?url=" + url, {method: 'PUT'});
         if (res.status === 200) {
-          status.innerText = "サーバ上でのダウンロードが完了しました";
+          status.innerText = "サーバ上での動画ダウンロードが完了しました";
         }
         else if (res.status === 500) {
-          status.innerText = "サーバ上での画像ダウンロードに失敗しました";
+          status.innerText = "サーバ上での動画ダウンロードに失敗しました";
         }
         const output = document.getElementById("output");
         output.value = (await res.json())["output"];
