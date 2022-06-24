@@ -36,17 +36,19 @@ export const DeletePage = ({ files, pagination }: VideoFilesProvider) => `
     </script>
   </head>
   <body>
-    <nav style="display:flex;flex-direction:column;">
-      <section style="margin-bottom:1rem;">
-        <h1 style="margin:0;">動画配信サーバ</h1>
-        <p style="margin:0;">動画置き場 (?)</p>
-      </section>
-      <span>動画ファイル数: ${files.length}</span>
-      <a href="/upload">動画ファイルをアップロードする (管理者用)</a>
-      <a href="/delete">動画ファイルを削除する (管理者用)</a>
-      <a href="/yt-dlp">yt-dlp を使用してサーバーで直接ダウンロードする (管理者用)</a>
-      <a href="/">インデックスに戻る</a>
-    </nav>
+  <header style="display:flex;flex-direction:column;">
+  <section style="margin-bottom:1rem;">
+    <h1 style="margin:0;">動画配信サーバ</h1>
+    <p style="margin:0;">動画置き場 (?)</p>
+  </section>
+  <span>動画ファイル数: ${files.length}</span>
+  <nav style="display:flex;flex-direction:column;">
+  <a href="/">インデックスに戻る</a>
+  <a href="/upload">動画ファイルをアップロードする (管理者用)</a>
+  <a href="/delete">動画ファイルを削除する (管理者用)</a>
+  <a href="/yt-dlp">yt-dlp を使用してサーバで直接ダウンロードする (管理者用)</a>
+  </nav>
+</header>
     <hr style="margin-top: 1.2rem; margin-bottom: 1.2rem;" />
     <main>
       <section>
