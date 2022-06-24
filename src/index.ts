@@ -10,17 +10,16 @@ import { SITE_BASEURL } from "./environment";
 import { readSyncVideoFiles } from "./files";
 import { paginate } from "./pagination";
 import { encode } from "./mpegts";
-import {
-  indexDocument,
-  uploadDocument,
-  deleteDocument,
-  playerDocument,
-} from "./document";
 import { uploader } from "./uploader";
 import stream from "stream";
-
 import { name as APP_NAME, version as APP_VERSION } from "../package.json";
 import { shot } from "./thumbnail";
+import { ytdlp } from "./yt-dlp";
+import { IndexPage } from "./pages";
+import { UploadPage } from "./pages/upload";
+import { DeletePage } from "./pages/delete";
+import { PlayerPage } from "./pages/player";
+import { YtdlpPage } from "./pages/yt-dlp";
 
 const app = express();
 
@@ -165,7 +164,7 @@ app.get("/", (req, res, next) => {
   const provider = { files, pagination };
   res.setHeader("Content-Type", "text/html");
   res.setHeader("Content-DPR", "2.0");
-  res.send(indexDocument(provider));
+  res.send(IndexPage(provider));
 });
 
 app.post("/upload", (req, res, next) => {
@@ -211,7 +210,7 @@ app.get("/upload", (req, res) => {
   const files = readSyncVideoFiles();
   res.setHeader("Content-Type", "text/html");
   res.status(201);
-  res.send(uploadDocument(files));
+  res.send(UploadPage(files));
 });
 
 app.get("/delete", (req, res, next) => {
@@ -234,7 +233,7 @@ app.get("/delete", (req, res, next) => {
   const provider = { files, pagination };
   res.setHeader("Content-Type", "text/html");
   res.setHeader("Content-DPR", "2.0");
-  res.send(deleteDocument(provider));
+  res.send(DeletePage(provider));
 });
 
 app.delete("/delete", (req, res, next) => {
@@ -297,8 +296,49 @@ app.get("/i/:fileName", (req, res, next) => {
   };
   const provider = { files, pagination };
   res.setHeader("Content-Type", "text/html");
-  res.send(playerDocument(fileName, provider));
+  res.send(PlayerPage(fileName, provider));
 });
+
+app.put("/yt-dlp", (req, res, next) => {
+  const credentials = auth(req);
+  if (!credentials || !checkAuth(credentials.name, credentials.pass)) {
+    res.status(401);
+    res.setHeader(
+      "WWW-Authenticate",
+      'Basic realm="Access to the staging site", charset="UTF-8"'
+    );
+    res.end("Access denied");
+    return;
+  }
+  
+  const { url } = req.query;
+
+  if (!url || typeof url !== "string") return next();
+
+  ytdlp(url, {
+    onError: (error) => {
+      console.log("Exec error: " + error);
+      res.send({output: error})
+      res.end(200);
+    }, 
+    onStdout: (stdout) => {
+      console.log("stdout: " + stdout);
+      res.send({output: stdout})
+      res.end(200);
+    }, 
+    onStderr: (stderr) => {
+      console.log("stderr: " + stderr);
+      res.send({output: stderr})
+      res.end(200);
+    },
+  });
+})
+
+app.get("/yt-dlp", (req, res, next) => {
+  const files = readSyncVideoFiles();
+  res.setHeader("Content-Type", "text/html");
+  res.send(YtdlpPage(files));
+})
 
 app.use("/assets", express.static(path.resolve(__dirname, "..", "assets")));
 

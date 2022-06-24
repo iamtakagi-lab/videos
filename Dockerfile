@@ -2,8 +2,11 @@ FROM node:16
 
 RUN apt-get update \
     && apt-get install -y locales \
+    && apt install python3 \
     && locale-gen ja_JP.UTF-8 \
-    && echo "export LANG=ja_JP.UTF-8" >> ~/.bashrc
+    && echo "export LANG=ja_JP.UTF-8" >> ~/.bashrc \
+    && wget -qO /usr/local/bin/yt-dlp https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp \
+    && chmod a+rx /usr/local/bin/yt-dlp
 
 ENV DEV="make gcc git g++ automake curl wget autoconf build-essential libass-dev libfreetype6-dev libsdl1.2-dev libtheora-dev libtool libva-dev libvdpau-dev libvorbis-dev libxcb1-dev libxcb-shm0-dev libxcb-xfixes0-dev pkg-config texinfo zlib1g-dev"
 ENV FFMPEG_VERSION=5.0.1
