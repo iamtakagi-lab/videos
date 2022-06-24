@@ -1,12 +1,11 @@
-
 import { ALLOWED_FORMATS, MPEGTS_FORMATS_REGEX } from "../constants";
 import { SITE_BASEURL } from "../environment";
 import { VideoFilesProvider } from "../types";
 
 export const PlayerPage = (
-    fileName: string,
-    { files, pagination }: VideoFilesProvider
-  ) => `
+  fileName: string,
+  { files, pagination }: VideoFilesProvider
+) => `
   <!DOCTYPE html>
   <html lang="ja">
     <head>
