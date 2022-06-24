@@ -329,7 +329,7 @@ app.put("/yt-dlp", (req, res, next) => {
     onStderr: (stderr) => {
       console.log("stderr: " + stderr);
       res.send({output: stderr})
-      res.end(200);
+      res.end(500);
     },
   });
 })

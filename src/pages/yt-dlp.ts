@@ -48,10 +48,15 @@ export const YtdlpPage = (files: string[]) => `
         submitBtn.disabled = true;
         const form = document.querySelector("form");
         const status = document.getElementById("status")
-        status.innerText = "サーバー上で動画ファイルをダウンロードしています..."
+        status.innerText = "サーバ上で動画ファイルをダウンロードしています..."
         const url = document.getElementById("url").value;
         const res = await fetch("/yt-dlp?url=" + url, {method: 'PUT'});
-        status.innerText = "";
+        if (res.status === 200) {
+          status.innerText = "サーバ上でのダウンロードが完了しました";
+        }
+        else if (res.status === 500) {
+          status.innerText = "サーバ上での画像ダウンロードに失敗しました";
+        }
         const output = document.getElementById("output");
         output.value = (await res.json())["output"];
         submitBtn.disabled = false;
@@ -75,7 +80,7 @@ export const YtdlpPage = (files: string[]) => `
     <hr style="margin-top: 1.2rem; margin-bottom: 1.2rem" />
     <main>
       <section>
-        <h2>yt-dlp を使用してサーバーで直接ダウンロードする (管理者用)</h2>
+        <h2>yt-dlp を使用してサーバで直接ダウンロードする (管理者用)</h2>
         <form
           onsubmit="download(event)"
           style="display: flex; flex-direction: column"
