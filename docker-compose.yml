@@ -8,8 +8,8 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - ./storage:/app/storage:rw
-      - ./thumbnail:/app/thumbnail:rw
+      - /mnt/data1/videos/storage:/app/storage:rw
+      - /mnt/data1/videos/thumbnail:/app/thumbnail:rw
     env_file:
       - .env
     environment:
