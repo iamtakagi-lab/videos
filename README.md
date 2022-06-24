@@ -29,6 +29,7 @@ $ docker-compose up -d
 ### docker-compose.yml (example)
 ```yml
 version: '3.8'
+
 services:
   app:
     container_name: videos
@@ -37,8 +38,8 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - ./storage:/app/storage:rw
-      - ./thumbnail:/app/thumbnail:rw
+      - /mnt/data1/videos/storage:/app/storage:rw
+      - /mnt/data1/videos/thumbnail:/app/thumbnail:rw
     env_file:
       - .env
     environment:
@@ -48,6 +49,7 @@ services:
     restart: unless-stopped
     networks:
       - proxy_network
+
 networks:
   proxy_network:
     external: true
