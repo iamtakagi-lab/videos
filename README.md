@@ -14,12 +14,16 @@ See a .env and edit it.
 ## References
 - [FFmpeg](https://github.com/FFmpeg/FFmpeg)
 - [mpegts.js](https://github.com/xqq/mpegts.js)
+- [yt-dlp](https://github.com/yt-dlp/yt-dlp)
 
 ### FFmpeg
 Version: 5.0.1
 
+### yt-dlp
+Version: Latest
+
 ### mpegts.js
-Using [this Fork and Build](https://github.com/iamtakagi/mpegts.js).
+Using [this Fork and Build](https://github.com/iamtakagi/mpegts.js)
 
 ## Get Started
 ```console
