@@ -318,18 +318,15 @@ app.put("/yt-dlp", (req, res, next) => {
   ytdlp(url, {
     onError: (error) => {
       console.log("Exec error: " + error);
-      res.send({output: error})
-      res.end(200);
+      res.status(200).send({output: error}).end()
     }, 
     onStdout: (stdout) => {
       console.log("stdout: " + stdout);
-      res.send({output: stdout})
-      res.end(200);
+      res.status(200).send({output: stdout}).end()
     }, 
     onStderr: (stderr) => {
       console.log("stderr: " + stderr);
-      res.send({output: stderr})
-      res.end(500);
+      res.status(500).send({output: stderr}).end();
     },
   });
 })
