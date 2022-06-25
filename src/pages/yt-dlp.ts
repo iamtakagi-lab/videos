@@ -46,6 +46,7 @@ export const YtdlpPage = (files: string[]) => `
         event.preventDefault();
         const submitBtn = document.getElementById("submit_btn")
         submitBtn.disabled = true;
+        submitBtn.innerText = "ダウンロード中です..."
         const form = document.querySelector("form");
         const status = document.getElementById("status")
         status.innerText = "サーバ上で動画ファイルをダウンロードしています..."
@@ -60,6 +61,7 @@ export const YtdlpPage = (files: string[]) => `
         const output = document.getElementById("output");
         output.value = (await res.json())["output"];
         submitBtn.disabled = false;
+        submitBtn.innerText = "実行"
       }
     </script>
   </head>
@@ -95,7 +97,7 @@ export const YtdlpPage = (files: string[]) => `
           <span>サポートされているサイト: <a href="https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md">ここに載ってる</a></span>
           <button id="submit_btn" type="submit">実行</button>
           <span id="status"></span>
-          <textarea id="output" rows="30" cols="50"> </textarea>
+          <textarea id="output" rows="30" cols="50"></textarea>
         </form>
       </section>
       <div id="modal" class="modal">
