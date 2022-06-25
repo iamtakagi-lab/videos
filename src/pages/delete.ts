@@ -55,14 +55,14 @@ export const DeletePage = ({ files, pagination }: VideoFilesProvider) => `
         <h2>動画ファイルを削除する (管理者用)</h2>
         <p>削除したい動画をクリックしてください</p>
         <div style="display:flex;flex-wrap:wrap;">
-    ${pagination.files
-      .map((fileName) => {
-        return `<div id="${fileName}" style="display:flex;flex-direction:column;max-width:200px;margin:.2rem;cursor:pointer;" onclick="deleteVideoFile('${fileName}');">
-        <img src="${SITE_BASEURL}/thumbnail?fileName=${fileName}" id="${fileName}" alt="${fileName}" width="200px"></img>
-        <span style="font-size:.8rem;transition:0.3s;" onmouseover="this.style.opacity=0.7;" onmouseout="this.style.opacity=1.0;">${fileName}</span>
-        </div>`;
-      })
-      .join("")}
+        ${pagination.files
+          .map((fileName) => {
+            return `<div id="${fileName}" style="display:flex;flex-direction:column;max-width:200px;cursor:pointer;" onclick="play('${fileName}');">
+              <img src="${SITE_BASEURL}/thumbnail?fileName=${fileName}" id="${fileName}" alt="${fileName}" width="200px"></img>
+              <span style="font-size:.8rem;transition:0.3s;" onmouseover="this.style.opacity=0.7;" onmouseout="this.style.opacity=1.0;">${fileName}</span>
+              </div>`;
+          })
+          .join("")}
     </div>
         <span style="margin-top:1rem;display:inline-block;">
         ${
