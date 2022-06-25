@@ -8,7 +8,7 @@
 - .mp4
 - .webm
 
-### Upload Size
+### Upload Limit
 See a .env and edit it.
 
 ## References
