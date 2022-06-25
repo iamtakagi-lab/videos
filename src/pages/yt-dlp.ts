@@ -46,7 +46,7 @@ export const YtdlpPage = (files: string[]) => `
         event.preventDefault();
         const submitBtn = document.getElementById("submit_btn")
         submitBtn.disabled = true;
-        submitBtn.innerText = "ダウンロード中です..."
+        submitBtn.innerText = "ダウンロード中です...";
         const form = document.querySelector("form");
         const status = document.getElementById("status")
         status.innerText = "サーバ上で動画ファイルをダウンロードしています..."
@@ -54,14 +54,14 @@ export const YtdlpPage = (files: string[]) => `
         const res = await fetch("/yt-dlp?url=" + url, {method: 'PUT'});
         if (res.status === 200) {
           status.innerText = "サーバ上での動画ダウンロードが完了しました";
+          const output = document.getElementById("output");
+          output.value = (await res.json())["output"];
         }
         else if (res.status === 500) {
           status.innerText = "サーバ上での動画ダウンロードに失敗しました";
         }
-        const output = document.getElementById("output");
-        output.value = (await res.json())["output"];
         submitBtn.disabled = false;
-        submitBtn.innerText = "実行"
+        submitBtn.innerText = "実行";
       }
     </script>
   </head>

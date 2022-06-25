@@ -67,12 +67,12 @@ export const DeletePage = ({ files, pagination }: VideoFilesProvider) => `
         <span style="margin-top:1rem;display:inline-block;">
         ${
           pagination.prev
-            ? `<a href="${SITE_BASEURL}?page=${pagination.prev}" style="margin-right:.7rem;"><- 前のページ</a>`
+            ? `<a href="${SITE_BASEURL}/delete?page=${pagination.prev}" style="margin-right:.7rem;"><- 前のページ</a>`
             : ``
         } 
         ${
           pagination.next
-            ? `<a href="${SITE_BASEURL}?page=${pagination.next}">次のページ -></a>`
+            ? `<a href="${SITE_BASEURL}/delete?page=${pagination.next}">次のページ -></a>`
             : ``
         }
       </span>
