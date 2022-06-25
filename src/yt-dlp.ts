@@ -4,9 +4,9 @@ import path from "path";
 export const ytdlp = (
   url: string,
   {
+    onError,
     onStdout,
     onStderr,
-    onError,
   }: {
     onError: (error: ExecException | null) => void;
     onStdout: (stdout: string) => void;
