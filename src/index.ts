@@ -318,7 +318,7 @@ app.put("/yt-dlp", (req, res, next) => {
   ytdlp(url, {
     onError: (error) => {
       console.log("Exec error: " + error);
-      res.status(200).send({output: error}).end()
+      res.status(500).send({output: error?.toString()}).end()
     }, 
     onStdout: (stdout) => {
       console.log("stdout: " + stdout);
