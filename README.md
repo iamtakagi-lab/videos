@@ -51,8 +51,8 @@ services:
       - LANG=ja_JP.UTF-8
       - PORT=3000
     restart: unless-stopped
-    ports
-      -3000:3000
+    ports:
+      - 3000:3000
 ```
 
 ### .env
