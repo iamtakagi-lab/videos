@@ -2,9 +2,9 @@ FROM node:16
 
 RUN apt-get update \
     && apt-get install -y locales \
-    && apt install python3 \
     && locale-gen ja_JP.UTF-8 \
     && echo "export LANG=ja_JP.UTF-8" >> ~/.bashrc \
+    && apt install python3 \
     && wget -qO /usr/local/bin/yt-dlp https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp \
     && chmod a+rx /usr/local/bin/yt-dlp
 
