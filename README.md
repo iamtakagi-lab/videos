@@ -9,7 +9,7 @@
 - .webm
 
 ### Upload Limit
-See a .env and edit it.
+See a `.env` and edit it.
 
 ## References
 - [FFmpeg](https://github.com/FFmpeg/FFmpeg)
