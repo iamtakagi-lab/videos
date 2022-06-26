@@ -27,7 +27,7 @@ Using [this Fork and Build](https://github.com/iamtakagi/mpegts.js)
 
 ## Get Started
 ```console
-$ docker-compose up -d
+$ docker-compose up -d --build
 ```
 
 ### docker-compose.yml (example)
@@ -42,21 +42,17 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - /mnt/data1/videos/storage:/app/storage:rw
-      - /mnt/data1/videos/thumbnail:/app/thumbnail:rw
+      - ./storage:/app/storage:rw
+      - ./thumbnail:/app/thumbnail:rw
     env_file:
       - .env
     environment:
       - TZ=Asia/Tokyo
       - LANG=ja_JP.UTF-8
-      - PORT=8777
+      - PORT=3000
     restart: unless-stopped
-    networks:
-      - proxy_network
-
-networks:
-  proxy_network:
-    external: true
+    ports
+      -3000:3000
 ```
 
 ### .env
