@@ -97,7 +97,7 @@ export const YtdlpPage = (files: string[]) => `
           <span>サポートされているサイト: <a href="https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md">ここに載ってる</a></span>
           <button id="submit_btn" type="submit">実行</button>
           <span id="status"></span>
-          <textarea id="output" rows="30" cols="50"></textarea>
+          <textarea id="output" rows="30" cols="50" readonly></textarea>
         </form>
       </section>
       <div id="modal" class="modal">
