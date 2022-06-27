@@ -23,6 +23,30 @@ import { YtdlpPage } from "./pages/yt-dlp";
 
 const app = express();
 
+
+app.get("/", (req, res, next) => {
+  const { page } = req.query;
+
+  const files = readSyncVideoFiles();
+
+  const index = page && typeof page === "string" ? parseInt(page) : 1 as const;
+
+  const currentPaginated = paginate(files, PAGE_SIZE, index);
+  const prevPaginated = paginate(files, PAGE_SIZE, index - 1);
+  const nextPaginated = paginate(files, PAGE_SIZE, index + 1);
+  const pagination = {
+    index,
+    size: PAGE_SIZE,
+    prev: prevPaginated.length != 0 ? index - 1 : null,
+    next: nextPaginated.length != 0 ? index + 1 : null,
+    files: currentPaginated,
+  };
+  const provider = { files, pagination };
+  res.setHeader("Content-Type", "text/html");
+  res.setHeader("Content-DPR", "2.0");
+  res.send(IndexPage(provider));
+});
+
 app.get("/mpegts", (req, res, next) => {
   const { fileName } = req.query;
   if (!fileName || typeof fileName !== "string") return next();
@@ -144,29 +168,6 @@ app.get("/thumbnail", (req, res, next) => {
   }
 });
 
-app.get("/", (req, res, next) => {
-  const { page } = req.query;
-
-  const files = readSyncVideoFiles();
-
-  const index = page && typeof page === "string" ? parseInt(page) : 1;
-
-  const currentPaginated = paginate(files, PAGE_SIZE, index);
-  const prevPaginated = paginate(files, PAGE_SIZE, index - 1);
-  const nextPaginated = paginate(files, PAGE_SIZE, index + 1);
-  const pagination = {
-    index,
-    size: PAGE_SIZE,
-    prev: prevPaginated.length != 0 ? index - 1 : null,
-    next: nextPaginated.length != 0 ? index + 1 : null,
-    files: currentPaginated,
-  };
-  const provider = { files, pagination };
-  res.setHeader("Content-Type", "text/html");
-  res.setHeader("Content-DPR", "2.0");
-  res.send(IndexPage(provider));
-});
-
 app.post("/upload", (req, res, next) => {
   const credentials = auth(req);
   if (!credentials || !checkAuth(credentials.name, credentials.pass)) {
@@ -218,7 +219,7 @@ app.get("/delete", (req, res, next) => {
 
   const files = readSyncVideoFiles();
 
-  const index = page && typeof page === "string" ? parseInt(page) : 1;
+  const index = page && typeof page === "string" ? parseInt(page): 1 as const;
 
   const paginated = paginate(files, PAGE_SIZE, index);
   const prevPaginated = paginate(files, PAGE_SIZE, index - 1);
