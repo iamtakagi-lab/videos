@@ -261,7 +261,7 @@ app.delete("/delete", (req, res, next) => {
     // 動画ファイル削除
     fs.unlinkSync(path.resolve(__dirname, "..", "storage", fileName));
 
-    //サムネファイルがあったら削除
+    // サムネファイルもあったら削除
     if (
       fs.existsSync(
         path.resolve(__dirname, "..", "thumbnail", `${fileName}.jpg`)
