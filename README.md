@@ -51,11 +51,11 @@ services:
       - TZ=Asia/Tokyo
       - LANG=ja_JP.UTF-8
       - PORT=3000
-    restart: unless-stopped
     networks:
       - default
     ports:
       - 3000:3000
+    restart: unless-stopped
 ```
 
 ### .env
