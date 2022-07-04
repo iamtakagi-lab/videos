@@ -28,7 +28,7 @@ Using [this Fork and Build](https://github.com/iamtakagi/mpegts.js)
 
 ## Get Started
 ```console
-$ docker-compose up -d --build
+docker-compose up -d --build
 ```
 
 ### docker-compose.yml (example)
@@ -68,18 +68,18 @@ SITE_BASEURL=https://foo.com
 
 ### Run Development Server
 ```console
-$ yarn dev
+yarn dev
 ```
 
 ### Build
-Bundle webpack and Copy built mpegts.js
+Bundle Webpack and Copy built mpegts.js
 ```console
-$ yarn build
+yarn build
 ```
 
 ### Start as Production Mode
 ```console
-$ node app.js
+node app.js
 ```
 
 ## LICENSE
