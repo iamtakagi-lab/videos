@@ -72,7 +72,7 @@ yarn dev
 ```
 
 ### Build
-Bundle Webpack and Copy built mpegts.js
+Bundle by Webpack and Copy built mpegts.js
 ```console
 yarn build
 ```
